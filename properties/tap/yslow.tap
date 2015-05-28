@@ -1,0 +1,124 @@
+TAP version 13
+1..24
+ok 1 B (82) overall score
+ok 2 A (100) ynumreq: Make fewer HTTP requests
+not ok 3 F (0) ycdn: Use a Content Delivery Network (CDN)
+  ---
+  message: There are 24 static components that are not on CDN. <p>You can specify CDN hostnames in your preferences. See <a href="https://github.com/marcelduran/yslow/wiki/FAQ#wiki-faq_cdn">YSlow FAQ</a> for details.</p>
+  offenders:
+    - "assets.tqauto.tuiwebhub.com: 8 components, 451.0K (416.2K GZip)"
+    - "www.googletagmanager.com: 1 component, 137.2K (49.2K GZip)"
+    - "www.fritidsresor.se: 1 component, 6.3K (6.3K GZip)"
+    - "static.tqauto.tuiwebhub.com: 14 components, 429.5K"
+  ...
+ok 4 A (100) yemptysrc: Avoid empty src or href
+not ok 5 F (0) yexpires: Add Expires headers
+  ---
+  message: There are 24 static components without a far-future expiration date.
+  offenders:
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/css/boka-resa-main.css?version=2.6.0"
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/css/destinationPagesV1.5.css?version=2.0.2"
+    - "http://www.googletagmanager.com/gtm.js?id=GTM-QGLJ"
+    - "http://www.fritidsresor.se/content/scripts/searchpanel/search.js?v=140423"
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/js/commonUX.js?version=1.0"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h6f/h7c/9718715842590/1440x700-I-0223881-familjepaket-v2.jpg"
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/img/icons/loader.gif?1428713137"
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/img/sprites/dpSprite_1.png?1428713138"
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/img/sprites/nordics/concept-logo-sprite.png?1428713138"
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/img/sprites/nordics/social-media.png?1428713138"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h82/h1d/9196010405918/header-logo-se.png"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h76/h39/9719545757726/455x256-start-forlang-sommaren-par.jpg"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h36/hb4/9953322631198/624x358-vinterresor-w1516.jpg"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h8c/haa/9718717382686/Mallorca-I-0253842-624x358.jpg"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h5c/h89/9196072534046/304x171-fritidsresors-app-min-semester.jpg"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h09/h03/9196074434590/624x358-blue-village-hotell-fritidsresor.jpg"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h88/hc9/9718735601694/455x256-basta-resesajt-idg.png"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h65/hb5/9179566964766/last-minute.png"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h35/h57/9179566637086/newsletter.png"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h33/ha1/9179569258526/temaresor-fritidsresor.jpg"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h11/h5f/9179569455134/wondercruises-fritidsresor.jpg"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/hfd/h32/9202935332894/fritidsresor-dys-footer.png"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/hd6/hd7/9202935365662/footer-wot.png"
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/img/favicon.ico"
+  ...
+ok 6 A (100) ycompress: Compress components with gzip
+ok 7 A (100) ycsstop: Put CSS at top
+ok 8 A (100) yjsbottom: Put JavaScript at bottom
+ok 9 A (100) yexpressions: Avoid CSS expressions
+ok 10 N/A (-1) yexternal: Make JavaScript and CSS external # SKIP score N/A
+  ---
+  message: Only consider this if your property is a common user home page.
+  offenders:
+    - "There is a total of 1 inline css"
+    - "There is a total of 4 inline scripts"
+  ...
+ok 11 A (95) ydns: Reduce DNS lookups
+  ---
+  message: The components are split over more than 4 domains
+  offenders:
+    - "frse.tqauto.tuiwebhub.com: 1 component, 132.6K (86.9K GZip)"
+    - "assets.tqauto.tuiwebhub.com: 8 components, 451.0K (416.2K GZip)"
+    - "www.googletagmanager.com: 1 component, 137.2K (49.2K GZip)"
+    - "www.fritidsresor.se: 1 component, 6.3K (6.3K GZip)"
+    - "static.tqauto.tuiwebhub.com: 14 components, 429.5K"
+  ...
+ok 12 A (90) yminify: Minify JavaScript and CSS
+  ---
+  message: There is 1 component that can be minified
+  offenders:
+    - "http://www.fritidsresor.se/content/scripts/searchpanel/search.js?v=140423"
+  ...
+ok 13 A (100) yredirects: Avoid URL redirects
+ok 14 A (100) ydupes: Remove duplicate JavaScript and CSS
+not ok 15 F (0) yetags: Configure entity tags (ETags)
+  ---
+  message: There are 22 components with misconfigured ETags
+  offenders:
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/css/boka-resa-main.css?version=2.6.0"
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/css/destinationPagesV1.5.css?version=2.0.2"
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/js/commonUX.js?version=1.0"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h6f/h7c/9718715842590/1440x700-I-0223881-familjepaket-v2.jpg"
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/img/icons/loader.gif?1428713137"
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/img/sprites/dpSprite_1.png?1428713138"
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/img/sprites/nordics/concept-logo-sprite.png?1428713138"
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/img/sprites/nordics/social-media.png?1428713138"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h82/h1d/9196010405918/header-logo-se.png"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h76/h39/9719545757726/455x256-start-forlang-sommaren-par.jpg"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h36/hb4/9953322631198/624x358-vinterresor-w1516.jpg"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h8c/haa/9718717382686/Mallorca-I-0253842-624x358.jpg"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h5c/h89/9196072534046/304x171-fritidsresors-app-min-semester.jpg"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h09/h03/9196074434590/624x358-blue-village-hotell-fritidsresor.jpg"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h88/hc9/9718735601694/455x256-basta-resesajt-idg.png"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h65/hb5/9179566964766/last-minute.png"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h35/h57/9179566637086/newsletter.png"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h33/ha1/9179569258526/temaresor-fritidsresor.jpg"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h11/h5f/9179569455134/wondercruises-fritidsresor.jpg"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/hfd/h32/9202935332894/fritidsresor-dys-footer.png"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/hd6/hd7/9202935365662/footer-wot.png"
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/img/favicon.ico"
+  ...
+ok 16 A (100) yxhr: Make AJAX cacheable
+ok 17 A (100) yxhrmethod: Use GET for AJAX requests
+not ok 18 E (59) ymindom: Reduce the number of DOM elements
+  ---
+  message: There are 1751 DOM elements on the page
+  ...
+ok 19 A (100) yno404: Avoid HTTP 404 (Not Found) error
+ok 20 A (100) ymincookie: Reduce cookie size
+not ok 21 C (75) ycookiefree: Use cookie-free domains
+  ---
+  message: There are 5 components that are not cookie-free
+  offenders:
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/css/boka-resa-main.css?version=2.6.0"
+    - "http://assets.tqauto.tuiwebhub.com/media/assets/css/destinationPagesV1.5.css?version=2.0.2"
+    - "http://www.fritidsresor.se/content/scripts/searchpanel/search.js?v=140423"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h6f/h7c/9718715842590/1440x700-I-0223881-familjepaket-v2.jpg"
+    - "http://static.tqauto.tuiwebhub.com/media/sys_master/h82/h1d/9196010405918/header-logo-se.png"
+  ...
+ok 22 A (100) ynofilter: Avoid AlphaImageLoader filter
+ok 23 A (100) yimgnoscale: Do not scale images in HTML
+ok 24 A (90) yfavicon: Make favicon small and cacheable
+  ---
+  message: Favicon is more than 2000 bytes
+Favicon is not cacheable
+  ...
