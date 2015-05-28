@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd">
+ 
+	<context:component-scan base-package="com.tui.sonar.report" />
+	<mvc:annotation-driven/>
+	<mvc:resources location="/resources/" mapping="/resources/**"/>
+ 	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:config.properties</value>
+		</property>
+	</bean>
+	<util:properties id="metricKeyMap" location="classpath:metricsKey.properties" />
+ 
+ 	<bean id="sonarReportService" class="com.tui.sonar.report.service.impl.SonarReportServiceImpl"/>
+ 	<bean id="jenkinsReportService" class="com.tui.sonar.report.service.impl.JenkinsReportServiceImpl"/>
+ 	<bean id="tuiTapParser" class="com.tui.sonar.report.service.impl.TuiTapParserServiceImpl"/>
+ 	<bean id="sonarQualityGateService" class="com.tui.sonar.report.service.impl.SonarQualityGateServiceImpl"/>
+ 	<bean id="jenkinsBuildService" class="com.tui.sonar.report.service.impl.JenkinsBuildServiceImpl"/>
+ 	<bean id="zapperService" class="com.tui.sonar.report.service.impl.ZapperServiceImpl"/>
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/pages/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+</beans>
