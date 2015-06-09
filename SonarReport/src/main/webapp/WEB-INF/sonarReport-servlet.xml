@@ -24,6 +24,9 @@
 		</property>
 	</bean>
 	<util:properties id="metricKeyMap" location="classpath:metricsKey.properties" />
+	<util:properties id="metricCategory" location="classpath:metricsCategory.properties" />
+	<util:properties id="env" location="classpath:env.properties" />
+	<util:properties id="threshold" location="classpath:threshold.properties" />
  
  	<bean id="sonarReportService" class="com.tui.sonar.report.service.impl.SonarReportServiceImpl"/>
  	<bean id="jenkinsReportService" class="com.tui.sonar.report.service.impl.JenkinsReportServiceImpl"/>
