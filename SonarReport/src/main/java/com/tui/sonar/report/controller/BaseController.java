@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.client.RestClientException;
 
 import com.tui.sonar.report.service.JenkinsBuildService;
 import com.tui.sonar.report.service.JenkinsReportService;
@@ -44,6 +45,12 @@ public class BaseController {
 	private ZapperService zapperService;
 	@Autowired
 	private Properties metricKeyMap;
+	@Autowired
+	private Properties metricCategory;
+	@Autowired
+	private Properties env;
+	@Autowired
+	private Properties threshold;
 
 	@SuppressWarnings("unused")
 	@RequestMapping("/")
@@ -71,10 +78,13 @@ public class BaseController {
 			model.addAttribute("lstQualityGateMetricsMap", lstQualityGateMetricsMap);
 			model.addAttribute("buildStatusMap", buildStatusMap);
 			model.addAttribute("zapperResponse", zapperResponseMap);
-
-		} catch (IOException ioException) {
-			// TODO Auto-generated catch block
-			ioException.printStackTrace();
+			model.addAttribute("metricCategory", metricCategory);
+			model.addAttribute("envName", env);
+			model.addAttribute("threshold", threshold);
+		} catch (IOException  | RestClientException exception) {
+			
+			model.addAttribute("exception", exception);
+			return "errorPage";
 		}
 		return "sonarReport";
 
@@ -105,11 +115,11 @@ public class BaseController {
 		Map<String, String> conditionCoverageMap = new HashMap<>();
 
 		List<Map<String, String>> lstSonarMetricMap = sonarMetricMap
-				.get("WSH_fb_bookflow_js_Sonar_Reporter");
+				.get("WSH_Develop_bookflow_js_Sonar_Reporter");
 		
 
 		List<Map<String, String>> lstJenkinsMetricMap = jenkinMetricMap
-				.get("WSH_fb_bookflow_js_Sonar_Reporter");
+				.get("WSH_Develop_bookflow_js_Sonar_Reporter");
 		
 		populateLineAndConditionCoverageMap(lineCoverageMap,
 				conditionCoverageMap, lstJenkinsMetricMap);
@@ -136,7 +146,7 @@ public class BaseController {
 
 		lstModifiedMetricMap.add(lineCoverageMap);
 		lstModifiedMetricMap.add(conditionCoverageMap);
-		sonarMetricMap.put("WSH_fb_bookflow_js_Sonar_Reporter",
+		sonarMetricMap.put("WSH_Develop_bookflow_js_Sonar_Reporter",
 				lstModifiedMetricMap);
 	}
 
