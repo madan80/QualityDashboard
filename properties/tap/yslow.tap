@@ -4,7 +4,7 @@ ok 1 B (82) overall score
 ok 2 A (100) ynumreq: Make fewer HTTP requests
 not ok 3 F (0) ycdn: Use a Content Delivery Network (CDN)
   ---
-  message: This is a test. There are 24 static components that are not on CDN. <p>You can specify CDN hostnames in your preferences. See <a href="https://github.com/marcelduran/yslow/wiki/FAQ#wiki-faq_cdn">YSlow FAQ</a> for details.</p>
+  message: This is a test only. There are 24 static components that are not on CDN. <p>You can specify CDN hostnames in your preferences. See <a href="https://github.com/marcelduran/yslow/wiki/FAQ#wiki-faq_cdn">YSlow FAQ</a> for details.</p>
   offenders:
     - "assets.tqauto.tuiwebhub.com: 8 components, 451.0K (416.2K GZip)"
     - "www.googletagmanager.com: 1 component, 137.2K (49.2K GZip)"
