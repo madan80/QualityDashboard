@@ -304,6 +304,35 @@ body{
 	text-align: left;
 }
 
+.dashboard-zapper {
+	border-collapse: collapse;
+	border:1px solid #ccc;
+	margin:0 auto;
+	text-align:center;
+}
+
+.dashboard-zapper th{
+	border-collapse: collapse;
+	background: #092a5e;
+	color:#fff;
+	padding: 10px;
+	font-family: arial;
+	font-size: 12px;
+	border: 1px solid #ccc;
+	text-align: left;
+}
+
+.dashboard-zapper td{
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+	background: #f9f9f9;
+	color:#333;
+	padding: 10px;
+	font-family: arial;
+	font-size: 12px;
+	text-align: right;
+}
+
 .footer {
 	margin-top: 20px;
   	background: #e9f8ff;
@@ -323,4 +352,25 @@ body{
 
 .footer span{
 	margin: 0 5px;
+}
+
+
+.dashboard-report .SUCCESS{
+    color:#00CC00;
+    font-weight: bold;
+}
+
+.dashboard-report .FAILURE{
+    color:#ff0000;
+    font-weight: bold;
+}
+
+.threshold{
+    color:#ff0000;
+    font-weight: bold;
+}
+
+.dashboard-report .ABORTED{
+    color:#C00000;
+    font-weight: bold;
 }

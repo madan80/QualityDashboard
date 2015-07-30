@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.net.ssl.HostnameVerifier;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.http.client.HttpClient;
@@ -24,9 +26,12 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.tui.sonar.report.service.JenkinsBuildService;
+import com.tui.sonar.report.ssl.cert.MySimpleClientHttpRequestFactory;
+import com.tui.sonar.report.ssl.cert.NullHostnameVerifier;
 
 /**
  * @author machou
@@ -40,7 +45,7 @@ public class JenkinsBuildServiceImpl implements JenkinsBuildService {
 	@Value("${property.file.location.buildstatus}")
 	private String propertiesFileLocation;
 	
-	public Map<String, String> getBuildStatus() throws IOException{
+	public Map<String, String> getBuildStatus() throws IOException, RestClientException{
 		Map<String,String> map = new HashMap<>();
 		File file = new File(propertiesFileLocation);
 		String[] extensions = new String[]{"properties"};
@@ -53,7 +58,10 @@ public class JenkinsBuildServiceImpl implements JenkinsBuildService {
 				
 				HttpClient httpClient = HttpClientBuilder.create().build();
 				
-				HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
+				HostnameVerifier verifier = new NullHostnameVerifier();
+				  MySimpleClientHttpRequestFactory requestFactory = new MySimpleClientHttpRequestFactory(verifier);
+				
+				//HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(httpClient);
 				requestFactory.setReadTimeout(20000);
 				requestFactory.setConnectTimeout(30000);
 				

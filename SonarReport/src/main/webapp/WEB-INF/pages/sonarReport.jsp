@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="refresh" content="1800">
@@ -20,6 +21,7 @@
 				</div>
 			</div>
 	</header>
+	
 	<main class="dashboard">
 			<div class="group grid-960">
 				<div class="col grid-12">
@@ -104,7 +106,7 @@
 	<footer class="footer">
 				<div class="group grid-960">
 				<div class="col grid-12">
-					<a id="sonar-link" href="http://cqc.tuitravelplc.com/sessions/new">Sonar</a>
+					<a id="sonar-link" href="https://cqc.tuitravelplc.com/sessions/new">Sonar</a>
 					<span>|</span>
 					<a id="jankin-link" href="http://10.241.12.25:8080/jenkins/">Jenkins</a>
 				</div>

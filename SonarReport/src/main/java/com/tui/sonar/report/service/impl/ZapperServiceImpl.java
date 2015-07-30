@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.net.ssl.HostnameVerifier;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.http.client.HttpClient;
@@ -27,6 +29,8 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 
 import com.tui.sonar.report.service.ZapperService;
+import com.tui.sonar.report.ssl.cert.MySimpleClientHttpRequestFactory;
+import com.tui.sonar.report.ssl.cert.NullHostnameVerifier;
 
 /**
  * @author machou
@@ -54,8 +58,11 @@ public class ZapperServiceImpl implements ZapperService{
 
 			HttpClient httpClient = HttpClientBuilder.create().build();
 
-			HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(
-					httpClient);
+			/*HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(
+					httpClient);*/
+			
+			HostnameVerifier verifier = new NullHostnameVerifier();
+			   MySimpleClientHttpRequestFactory requestFactory = new MySimpleClientHttpRequestFactory(verifier);
 			requestFactory.setReadTimeout(20000);
 			requestFactory.setConnectTimeout(30000);
 
@@ -73,7 +80,7 @@ public class ZapperServiceImpl implements ZapperService{
 			ResponseEntity<Object> responseEntity = (ResponseEntity<Object>) restTemplate.exchange(url, HttpMethod.GET,null, Object.class);
 		    if(null!= responseEntity){
 		    	List<Map<String,String>> lstZapperResponseMap =  (List<Map<String, String>>) responseEntity.getBody();
-		    	zapperMetricsMap.put("url", lstZapperResponseMap.get(0).get("url"));
+		    	zapperMetricsMap.put("Url", lstZapperResponseMap.get(0).get("url"));
 		    	for(Map<String, String> map : lstZapperResponseMap){
 		    		String riskType = map.get("risk");
 		    		if(zapperMetricsMap.containsKey(riskType)){

@@ -11,6 +11,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.net.ssl.HostnameVerifier;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.http.client.HttpClient;
@@ -27,6 +29,8 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 
 import com.tui.sonar.report.service.SonarQualityGateService;
+import com.tui.sonar.report.ssl.cert.MySimpleClientHttpRequestFactory;
+import com.tui.sonar.report.ssl.cert.NullHostnameVerifier;
 
 /**
  * @author machou
@@ -55,8 +59,11 @@ public class SonarQualityGateServiceImpl implements SonarQualityGateService{
 
 			HttpClient httpClient = HttpClientBuilder.create().build();
 
-			HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(
-					httpClient);
+			/*HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(
+					httpClient);*/
+			HostnameVerifier verifier = new NullHostnameVerifier();
+			  MySimpleClientHttpRequestFactory requestFactory = new MySimpleClientHttpRequestFactory(verifier);
+			
 			requestFactory.setReadTimeout(20000);
 			requestFactory.setConnectTimeout(30000);
 

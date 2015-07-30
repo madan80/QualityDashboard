@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import javax.net.ssl.HostnameVerifier;
+
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 import org.apache.http.client.HttpClient;
@@ -34,6 +36,8 @@ import com.tui.sonar.report.bean.Elements;
 import com.tui.sonar.report.bean.JenkinsResponse;
 import com.tui.sonar.report.bean.Results;
 import com.tui.sonar.report.service.JenkinsReportService;
+import com.tui.sonar.report.ssl.cert.MySimpleClientHttpRequestFactory;
+import com.tui.sonar.report.ssl.cert.NullHostnameVerifier;
 
 /**
  * @author machou
@@ -64,8 +68,11 @@ public class JenkinsReportServiceImpl implements JenkinsReportService {
 
 			HttpClient httpClient = HttpClientBuilder.create().build();
 
-			HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(
-					httpClient);
+			/*HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory(
+					httpClient);*/
+			
+			HostnameVerifier verifier = new NullHostnameVerifier();
+			  MySimpleClientHttpRequestFactory requestFactory = new MySimpleClientHttpRequestFactory(verifier);
 			requestFactory.setReadTimeout(20000);
 			requestFactory.setConnectTimeout(30000);
 

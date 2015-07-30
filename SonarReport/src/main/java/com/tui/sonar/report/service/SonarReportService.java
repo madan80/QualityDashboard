@@ -18,6 +18,6 @@ import com.tui.sonar.report.bean.Metrics;
  *
  */
 public interface SonarReportService {
-	public Map<String, List<Map<String,String>>> getSonarMetricsForProject() throws IOException;
+	public Map<String, List<Map<String,String>>> getSonarMetricsForProject() throws IOException, NoSuchAlgorithmException;
 	
 }

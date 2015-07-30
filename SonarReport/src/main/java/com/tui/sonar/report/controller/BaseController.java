@@ -4,6 +4,7 @@
 package com.tui.sonar.report.controller;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -81,7 +82,7 @@ public class BaseController {
 			model.addAttribute("metricCategory", metricCategory);
 			model.addAttribute("envName", env);
 			model.addAttribute("threshold", threshold);
-		} catch (IOException  | RestClientException exception) {
+		} catch (IOException  | RestClientException | NoSuchAlgorithmException  exception) {
 			
 			model.addAttribute("exception", exception);
 			return "errorPage";
